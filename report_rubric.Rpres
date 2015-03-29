@@ -1,0 +1,79 @@
+Capstone Project -- Milestone Report Rubric
+========================================================
+author: PJ
+date: March 28, 2015
+
+Data description
+========================================================
+
+- Three major corpora (US English, encoded in UTF-8)
+    - Twitter (~160 MB, 2360148 lines of text)
+    - Blogs (~200 MB, 899288 lines)
+    - News (~196 MB, 1010242 lines)
+
+Initial findings in the original data
+========================================================
+
+- Various language types
+- Different vocabulary specific for the source
+    - Twitter has more 'spoken language' features
+    - Twitter has much more 'clumps of expression', hash-tags, links, etc., which are hard to process
+    - News on the other hand more formalized language
+- Foreign languages present (other than English)
+- Coding problems may occur 
+
+
+Text processing
+========================================================
+
+- Tokenization
+    - Selecting single words
+    - Designed regular expression select words, abbreviations
+    - Apostrophes and hyphens are kept, all other punctuation is removed
+    - No stop words are removed since the aim of the project is to replicate 'everyday use'
+- Normalization
+    - All words are lower case
+    - For final product geographical names and abbreviations should be kept in separate dictionary
+- Cleaning: profanity filtering
+    
+    Text processing (cont.)
+========================================================
+
+- N-grams
+    - Bi-grams and tri-grams
+    - Pairs and triplets are generated based on normalized and tokenized text
+    - Pair at least two time are kept for final processing (output file size is significantly reduced)
+- All data source files are processed using Python
+    - Much faster and efficient than R
+    
+    Exploratory analysis -- counts
+========================================================
+
+![Word count](word_counts.png)
+- The most 50 common word across all the sources is 'the'
+- Among all the source files, the appearance of 'stop words' is the most common
+- For other words the count value suddenly drops and is at the similar level for the three corpora
+
+Exploratory analysis -- n-grams
+========================================================
+Stop words pairs and triplets are the most common 50. Twitter data yields in both cases a bit different results.
+
+![Word count](bigram_counts.png)
+
+![Word count](trigram_counts.png)
+
+Exploratory analysis
+=======================================================
+
+- 84207980 unique tokens (words and word groups)
+- 295 unique words (rather tokens) yield 50% of vocabulary present in the sources
+- 10641 unique words yield 90% of vocabulary
+- Distribution of the counts is highly skewed
+
+Conclusions and further steps
+=======================================================
+
+- Tokenization requires further refining
+- Simple model will include _Markov Chain_ or _Naive Bayes_ or to predict word collocations (requires further research)
+- Git Repo: https://github.com/przemo/CourseraCapstoneProject
+

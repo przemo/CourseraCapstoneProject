@@ -1,0 +1,7 @@
+.Rproj.user
+.Rhistory
+.RData
+__pycache__
+*.pdf
+final/
+*.Rproj
